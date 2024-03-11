@@ -46,14 +46,14 @@ class UserController extends Controller
 
         return [
             'status' => 'success',
-            'access_token' => $user->createToken('login')->plainTextToken,
+            // 'access_token' => $user->createToken('login')->plainTextToken,
             $user
         ];
     }
 
     public function logout(Request $request) {
         if ($request->user()) {
-            $request->user()->currentAccessToken()->delete();
+            // $request->user()->currentAccessToken()->delete();
         }
 
         return [
