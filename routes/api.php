@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BeaconController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TruckController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
+
+Route::get('/sites', [SiteController::class, 'index']);
+
+Route::get('/trucks', [TruckController::class, 'index']);
+
+Route::get('/beacons', [BeaconController::class, 'index']);
