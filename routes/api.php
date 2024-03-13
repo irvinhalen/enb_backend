@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BeaconController;
+use App\Http\Controllers\BeaconTransactionController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TruckController;
+use App\Http\Controllers\TruckTransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,5 +31,7 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/sites', [SiteController::class, 'index']);
 
 Route::get('/trucks', [TruckController::class, 'index']);
+Route::get('/truck-transactions', [TruckTransactionController::class, 'index']);
 
 Route::get('/beacons', [BeaconController::class, 'index']);
+Route::get('/beacon-transactions', [BeaconTransactionController::class, 'index']);
