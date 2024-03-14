@@ -20,6 +20,14 @@ class UserController extends Controller
 
         $incomingFields['password'] = bcrypt($incomingFields['password']);
         User::create($incomingFields);
+
+        $user = User::where('username', $incomingFields['username'])->first();
+
+        return [
+            'status' => 'success',
+            // 'access_token' => $user->createToken('login')->plainTextToken,
+            $user
+        ];
     }
 
     public function login(Request $request) {
