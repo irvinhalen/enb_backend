@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BeaconController;
 use App\Http\Controllers\BeaconTransactionController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TruckController;
 use App\Http\Controllers\TruckTransactionController;
@@ -27,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
+
+Route::get('/dashboard', [DashboardController::class, 'line_chart']);
 
 Route::get('/sites', [SiteController::class, 'index']);
 
