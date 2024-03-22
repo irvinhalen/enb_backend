@@ -11,6 +11,7 @@ class TruckTransactionController extends Controller
                     ->select('project_name', 'license_plate', 'in', 'out', 'soil_amount', 'in_time', 'out_time', 'truck_transaction_id')
                     ->join('trucks', 'trucks.truck_id', '=', 'truck_transactions.truck_id')
                     ->join('sites', 'sites.site_id', '=', 'trucks.site_id')
+                    ->orderByRaw('in_time DESC')
                     ->get();
         return $truck_transactions;
     }
