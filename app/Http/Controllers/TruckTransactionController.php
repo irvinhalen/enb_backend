@@ -44,6 +44,16 @@ class TruckTransactionController extends Controller
             'out_time' => 'required'
         ]);
 
+        // TruckTransaction::create([
+        //     'truck_id' => $request['truck_id'],
+        //     'site_id' => $request['site_id'],
+        //     'soil_amount' => $request['soil_amount'],
+        //     'in' => $request['in'],
+        //     'out' => $request['out'],
+        //     'in_time' => $request['in_time'],
+        //     'out_time' => $request['out_time'],
+        // ]);
+
         DB::table('truck_transactions')->insert([
             ['truck_id' => $incomingFields['truck_id'], 'site_id' => $incomingFields['site_id'], 'soil_amount' => $incomingFields['soil_amount'], 'in' => $incomingFields['in'], 'out' => $incomingFields['out'], 'in_time' => $incomingFields['in_time'], 'out_time' => $incomingFields['out_time']]
         ]);
