@@ -38,6 +38,7 @@ Route::get('/truck-transactions', [TruckTransactionController::class, 'index']);
 Route::get('/transactions-select-data', [TruckTransactionController::class, 'select_data']);
 Route::post('/add-transaction', [TruckTransactionController::class, 'create']);
 Route::put('/update-transaction', [TruckTransactionController::class, 'update']);
+Route::delete('/delete-transaction', [TruckTransactionController::class, 'delete']);
 
 Route::get('/beacons', [BeaconController::class, 'index']);
 Route::get('/beacon-transactions', [BeaconTransactionController::class, 'index']);

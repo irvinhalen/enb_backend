@@ -85,4 +85,15 @@ class TruckTransactionController extends Controller
             $incomingFields
         ];
     }
+
+    public function delete(Request $request){
+        $transaction_id = $request['truck_transaction_id'];
+        DB::table('truck_transactions')
+        ->where('truck_transaction_id', '=', $transaction_id)
+        ->delete();
+
+        return [
+            'status' => 'success'
+        ];
+    }
 }
