@@ -16,7 +16,7 @@ class TruckTransactionController extends Controller
                     ->join('sites', 'sites.site_id', '=', 'trucks.site_id')
                     ->join('site_assignments', 'site_assignments.site_id', '=', 'sites.site_id')
                     ->whereRaw('user_id = ?', [$user_id])
-                    ->orderByRaw('in_time DESC')
+                    ->orderByRaw('truck_transaction_id DESC')
                     ->get();
         return $truck_transactions;
     }
