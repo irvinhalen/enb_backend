@@ -33,6 +33,10 @@ Route::get('/users', [UserController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'line_chart']);
 
 Route::get('/sites', [SiteController::class, 'index']);
+Route::post('/add-site', [SiteController::class, 'create']);
+Route::put('/update-site', [SiteController::class, 'update']);
+Route::delete('/delete-site', [SiteController::class, 'delete']);
+Route::get('/markers', [SiteController::class, 'map']);
 
 Route::get('/trucks', [TruckController::class, 'index']);
 Route::get('/truck-transactions', [TruckTransactionController::class, 'index']);
