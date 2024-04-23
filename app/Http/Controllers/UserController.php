@@ -12,11 +12,22 @@ class UserController extends Controller
 {
     public function index() {
         $users = DB::table('users')
-                    ->select('id', 'username', 'email', DB::raw('COUNT(site_id) AS assite'))
-                    ->join('site_assignments', 'site_assignments.user_id', '=', 'users.id')
-                    ->groupBy('id')
+                    ->select('id', 'username', 'email')
                     ->orderByRaw('id ASC')
                     ->get();
+
+        return $users;
+    }
+
+    public function assign() {
+        $users = DB::table('users')
+                    ->select('id', 'username', 'email', DB::raw('COALESCE(COUNT(site_id)) AS assite'))
+                    ->leftJoin('site_assignments', 'user_id', '=', 'id')
+                    ->where('id', '!=', 1)
+                    ->groupBy('id', 'username', 'email')
+                    ->orderByRaw('assite ASC')
+                    ->get();
+
         return $users;
     }
 

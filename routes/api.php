@@ -29,6 +29,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/assignments-user', [UserController::class, 'assign']);
 
 Route::get('/dashboard', [DashboardController::class, 'line_chart']);
 
@@ -37,6 +38,7 @@ Route::post('/add-site', [SiteController::class, 'create']);
 Route::put('/update-site', [SiteController::class, 'update']);
 Route::delete('/delete-site', [SiteController::class, 'delete']);
 Route::get('/markers', [SiteController::class, 'map']);
+Route::get('assignments-site', [SiteController::class, 'assign']);
 
 Route::get('/trucks', [TruckController::class, 'index']);
 Route::get('/truck-transactions', [TruckTransactionController::class, 'index']);
