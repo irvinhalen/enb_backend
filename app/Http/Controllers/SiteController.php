@@ -20,15 +20,17 @@ class SiteController extends Controller
 
     public function map(Request $request){
         $user_id = $request->id;
-
-        if($user_id == 1){
-            $sites = DB::table('sites')
-                        ->select(DB::raw('sites.site_id, project_name, city, town, barangay, count(truck_id) as num_trucks, latitude, longitude'))
-                        ->leftJoin('trucks', 'trucks.site_id', '=', 'sites.site_id')
-                        ->groupBy('sites.site_id')
-                        ->orderByRaw('sites.site_id DESC')
-                        ->get();
-        }else{
+        $user_role = $request->role;
+        switch($user_role){
+            case 1:
+                $sites = DB::table('sites')
+                            ->select(DB::raw('sites.site_id, project_name, city, town, barangay, count(truck_id) as num_trucks, latitude, longitude'))
+                            ->leftJoin('trucks', 'trucks.site_id', '=', 'sites.site_id')
+                            ->groupBy('sites.site_id')
+                            ->orderByRaw('sites.site_id DESC')
+                            ->get();
+                break;
+            default:
             $sites = DB::table('sites')
                         ->select(DB::raw('sites.site_id, project_name, city, town, barangay, count(truck_id) as num_trucks, latitude, longitude'))
                         ->leftJoin('trucks', 'trucks.site_id', '=', 'sites.site_id')

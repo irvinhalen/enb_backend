@@ -10,14 +10,27 @@ class TruckTransactionController extends Controller
 {
     public function index(Request $request){
         $user_id = $request->id;
-        $truck_transactions = DB::table('truck_transactions')
-                    ->select('project_name', 'license_plate', 'in', 'out', 'soil_amount', 'in_time', 'out_time', 'truck_transaction_id', 'sites.site_id', 'trucks.truck_id')
-                    ->join('trucks', 'trucks.truck_id', '=', 'truck_transactions.truck_id')
-                    ->join('sites', 'sites.site_id', '=', 'trucks.site_id')
-                    ->join('site_assignments', 'site_assignments.site_id', '=', 'sites.site_id')
-                    ->whereRaw('user_id = ?', [$user_id])
-                    ->orderByRaw('truck_transaction_id DESC')
-                    ->get();
+        $user_role = $request->role;
+        switch($user_role){
+            case 1:
+                $truck_transactions = DB::table('truck_transactions')
+                ->select('project_name', 'license_plate', 'in', 'out', 'soil_amount', 'in_time', 'out_time', 'truck_transaction_id', 'sites.site_id', 'trucks.truck_id')
+                ->join('trucks', 'trucks.truck_id', '=', 'truck_transactions.truck_id')
+                ->join('sites', 'sites.site_id', '=', 'trucks.site_id')
+                ->join('site_assignments', 'site_assignments.site_id', '=', 'sites.site_id')
+                ->orderByRaw('truck_transaction_id DESC')
+                ->get();
+                break;
+            default:
+                $truck_transactions = DB::table('truck_transactions')
+                ->select('project_name', 'license_plate', 'in', 'out', 'soil_amount', 'in_time', 'out_time', 'truck_transaction_id', 'sites.site_id', 'trucks.truck_id')
+                ->join('trucks', 'trucks.truck_id', '=', 'truck_transactions.truck_id')
+                ->join('sites', 'sites.site_id', '=', 'trucks.site_id')
+                ->join('site_assignments', 'site_assignments.site_id', '=', 'sites.site_id')
+                ->whereRaw('user_id = ?', [$user_id])
+                ->orderByRaw('truck_transaction_id DESC')
+                ->get();
+        }
         return $truck_transactions;
     }
 
