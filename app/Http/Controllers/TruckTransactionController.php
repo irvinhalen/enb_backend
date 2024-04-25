@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TruckTransaction;
+// use App\Models\TruckTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,6 +43,7 @@ class TruckTransactionController extends Controller
                     ->whereRaw('user_id = ?', [$user_id])
                     ->orderByRaw('project_name ASC')
                     ->get();
+
         return $options;
     }
 

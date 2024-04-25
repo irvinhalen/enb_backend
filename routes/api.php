@@ -41,6 +41,10 @@ Route::get('/markers', [SiteController::class, 'map']);
 Route::get('assignments-site', [SiteController::class, 'assign']);
 
 Route::get('/trucks', [TruckController::class, 'index']);
+Route::get('/trucks-select-data', [TruckController::class, 'select_data']);
+Route::post('/add-truck', [TruckController::class, 'create']);
+Route::put('/update-truck', [TruckController::class, 'update']);
+Route::delete('/delete-truck', [TruckController::class, 'delete']);
 Route::get('/truck-transactions', [TruckTransactionController::class, 'index']);
 Route::get('/transactions-select-data', [TruckTransactionController::class, 'select_data']);
 Route::post('/add-transaction', [TruckTransactionController::class, 'create']);
@@ -48,4 +52,7 @@ Route::put('/update-transaction', [TruckTransactionController::class, 'update'])
 Route::delete('/delete-transaction', [TruckTransactionController::class, 'delete']);
 
 Route::get('/beacons', [BeaconController::class, 'index']);
+Route::post('/add-beacon', [BeaconController::class, 'create']);
+Route::put('/update-beacon', [BeaconController::class, 'update']);
+Route::delete('/delete-beacon', [BeaconController::class, 'delete']);
 Route::get('/beacon-transactions', [BeaconTransactionController::class, 'index']);

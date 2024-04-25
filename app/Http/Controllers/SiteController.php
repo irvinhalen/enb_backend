@@ -66,7 +66,12 @@ class SiteController extends Controller
         ]);
 
         DB::table('sites')->insert([
-            ['project_name' => $incomingFields['project_name'], 'city' => $incomingFields['city'], 'town' => $incomingFields['town'], 'barangay' => $incomingFields['barangay'], 'latitude' => $incomingFields['latitude'], 'longitude' => $incomingFields['longitude']]
+            ['project_name' => $incomingFields['project_name'],
+            'city' => $incomingFields['city'],
+            'town' => $incomingFields['town'],
+            'barangay' => $incomingFields['barangay'],
+            'latitude' => $incomingFields['latitude'],
+            'longitude' => $incomingFields['longitude']]
         ]);
 
         return [
@@ -88,7 +93,14 @@ class SiteController extends Controller
 
         DB::table('sites')
         ->where('site_id', $incomingFields['site_id'])
-        ->update(['project_name' => $incomingFields['project_name'], 'city' => $incomingFields['city'], 'town' => $incomingFields['town'], 'barangay' => $incomingFields['barangay'], 'latitude' => $incomingFields['latitude'], 'longitude' => $incomingFields['longitude']]);
+        ->update([
+            'project_name' => $incomingFields['project_name'],
+            'city' => $incomingFields['city'],
+            'town' => $incomingFields['town'],
+            'barangay' => $incomingFields['barangay'],
+            'latitude' => $incomingFields['latitude'],
+            'longitude' => $incomingFields['longitude']
+        ]);
 
         return [
             'status' => 'success',
