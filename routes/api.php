@@ -32,6 +32,7 @@ Route::get('/users', [UserController::class, 'index']);
 Route::get('/assignments-user', [UserController::class, 'assign']);
 
 Route::get('/dashboard', [DashboardController::class, 'line_chart']);
+Route::post('/message', [DashboardController::class, 'message']);
 
 Route::get('/sites', [SiteController::class, 'index']);
 Route::post('/add-site', [SiteController::class, 'create']);

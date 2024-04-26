@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,5 +26,12 @@ class DashboardController extends Controller
                     ->orderByRaw('DATE(in_time) DESC')
                     ->get();
         return $line_data;
+    }
+
+    public function message(Request $request){
+        $message = $request->message;
+        event((new Message($message)));
+
+        return $message;
     }
 }
