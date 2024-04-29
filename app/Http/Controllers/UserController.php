@@ -70,7 +70,7 @@ class UserController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return [
                 'status' => 'error',
-                'message' => 'Invalid credentials.'
+                'message' => 'Invalid credentials'
             ];
         }
 

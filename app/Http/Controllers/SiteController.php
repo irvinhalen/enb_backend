@@ -55,6 +55,18 @@ class SiteController extends Controller
         return $sites;
     }
 
+    public function assignments(Request $request){
+        $user_id = $request->id;
+        $assignments = DB::table('site_assignments')
+                        ->select('site_assignment_id', 'site_assignments.site_id', 'project_name')
+                        ->join('sites', 'sites.site_id', '=', 'site_assignments.site_id')
+                        ->where('user_id', [$user_id])
+                        ->orderByRaw('project_name ASC')
+                        ->get();
+
+        return $assignments;
+    }
+
     public function create(Request $request){
         $incomingFields = $request->validate([
             'project_name' => 'required',

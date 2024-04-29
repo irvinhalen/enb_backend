@@ -39,7 +39,8 @@ Route::post('/add-site', [SiteController::class, 'create']);
 Route::put('/update-site', [SiteController::class, 'update']);
 Route::delete('/delete-site', [SiteController::class, 'delete']);
 Route::get('/markers', [SiteController::class, 'map']);
-Route::get('assignments-site', [SiteController::class, 'assign']);
+Route::get('/assignments-site', [SiteController::class, 'assign']);
+Route::get('assignments', [SiteController::class, 'assignments']);
 
 Route::get('/trucks', [TruckController::class, 'index']);
 Route::get('/trucks-select-data', [TruckController::class, 'select_data']);
