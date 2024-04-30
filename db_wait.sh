@@ -19,5 +19,6 @@ php artisan db:seed --class=SiteSeeder
 php artisan db:seed --class=TruckSeeder
 php artisan db:seed --class=BeaconSeeder
 php artisan db:seed --class=SiteAssignmentSeeder
+php artisan db:seed --class=TruckTransactionSeeder
 
 php artisan serve --host=0.0.0.0 --port=3001

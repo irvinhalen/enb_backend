@@ -29,8 +29,8 @@ class SiteSeeder extends Seeder
                 'city' => 'Townsville',
                 'town' => 'Intown',
                 'barangay' => 'Kamagong',
-                'latitude' => 10.2847,
-                'longitude' => 123.944
+                'latitude' => 10.32042,
+                'longitude' => 123.90501
             ]
         ]);
     }
