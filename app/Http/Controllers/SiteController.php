@@ -67,6 +67,36 @@ class SiteController extends Controller
         return $assignments;
     }
 
+    public function add_assignment(Request $request){
+        $user_id = $request['user_id'];
+        $site_id = $request['site_id'];
+
+        DB::table('site_assignments')->insert([
+            [
+                'user_id' => $user_id,
+                'site_id' => $site_id
+            ]
+        ]);
+
+        return [
+            'status' => 'success',
+            $user_id,
+            $site_id
+        ];
+    }
+
+    public function delete_assignment(Request $request){
+        $site_assignment_id = $request['site_assignment_id'];
+
+        DB::table('site_assignments')
+        ->where('site_assignment_id', '=', $site_assignment_id)
+        ->delete();
+
+        return [
+            'status' => 'success'
+        ];
+    }
+
     public function create(Request $request){
         $incomingFields = $request->validate([
             'project_name' => 'required',
