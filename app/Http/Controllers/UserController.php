@@ -13,10 +13,32 @@ class UserController extends Controller
     public function index() {
         $users = DB::table('users')
                     ->select('id', 'username', 'email')
+                    ->where('role', '=', 2)
                     ->orderByRaw('id ASC')
                     ->get();
 
         return $users;
+    }
+
+    public function update(Request $request) {
+        $incomingFields = $request->validate([
+            'id' => 'required',
+            'username' => 'required',
+            'email' => 'required'
+        ]);
+
+        DB::table('users')
+        ->where('id', $incomingFields['id'])
+        ->update([
+            'username' => $incomingFields['username'],
+            'email' => $incomingFields['email'],
+            'updated_at' => now()
+        ]);
+
+        return [
+            'status' => 'success',
+            $incomingFields
+        ];
     }
 
     public function assign() {

@@ -29,6 +29,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/users', [UserController::class, 'index']);
+Route::put('update-user', [UserController::class, 'update']);
 Route::get('/assignments-user', [UserController::class, 'assign']);
 
 Route::get('/dashboard', [DashboardController::class, 'line_chart']);
